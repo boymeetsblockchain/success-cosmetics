@@ -10,7 +10,7 @@ export const Footer =()=>{
                   <div className=" flex flex-col  gap-y-4 gap-x-4 md:items-center md:flex-row-reverse justify-between">
                      <div className="flex space-y-3 flex-col">
                          <h1 className="text-lg text-left font-medium">SIGN UP FOR DISCOUNTS & UPDATES</h1>
-                         <Input type="email" className="bg-gray-900 outline-none border-none  md:w-[600px] w-[400px] " placeholder="Enter your phone number or email address"/>
+                         <Input type="email" className="bg-gray-900 outline-none border-none  md:w-[600px] w-full " placeholder="Enter your phone number or email address"/>
                          <Button className="bg-barbie-pink w-[200px]">
                             Subcribe
                          </Button>
