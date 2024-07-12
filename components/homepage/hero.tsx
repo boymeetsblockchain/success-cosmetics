@@ -10,8 +10,8 @@ export const Hero = () => {
         <h1 className="text-4xl md:text-7xl  font-bold">
           Welcome to Success Cosmetics
         </h1>
-        <h2 className="text-2xl md:text-5xl font-normal">
-          Any Item Not Currently On The Site Is Out Of Stock And Undergoing Restock
+        <h2 className="text-lg  md:text-3xl font-normal">
+          Any item not currently on the site is out of stock and undergoing restock
         </h2>
         <Button className="bg-barbie-pink text-white w-[200px] border border-transparent  transition-colors duration-300 ease-in-out hover:bg-white hover:text-barbie-pink hover:border-barbie-pink">
             <Link href={'/products'}>
