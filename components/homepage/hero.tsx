@@ -1,10 +1,21 @@
-export const Hero =()=>{
-    return(
-        <div className="h-[600px] bg-center bg-cover flex items-center  flex-col gap-y-4 justify-center opacity-90" style={{ backgroundImage: 'url("/hero1.jpg")' }}>
-        <h1 className="text-4xl md:text-7xl text-center capitalize font-bold">
-            Welcome to Success Cosmetics
+import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
+
+export const Hero = () => {
+  return (
+    <div className={cn("relative h-[600px] bg-center bg-cover flex items-center flex-col gap-y-4 justify-center ")} style={{ backgroundImage: 'url("/hero1.jpg")' }}>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="relative z-10 text-center flex items-center flex-col gap-y-3 text-white">
+        <h1 className="text-4xl md:text-7xl  font-bold">
+          Welcome to Success Cosmetics
         </h1>
-        <h2 className="text-2xl md:text-5xl font-medium text-center">Any Item Not Currently On The Site Is Out Of Stock And Undergoing Restock</h2>
+        <h2 className="text-2xl md:text-5xl font-normal">
+          Any Item Not Currently On The Site Is Out Of Stock And Undergoing Restock
+        </h2>
+        <Button className="bg-barbie-pink text-white w-[200px] border border-transparent  transition-colors duration-300 ease-in-out hover:bg-white hover:text-barbie-pink hover:border-barbie-pink">
+            Learn More
+        </Button>
+      </div>
     </div>
-    )
-}
+  );
+};
