@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 export const Hero = () => {
   return (
@@ -13,7 +14,9 @@ export const Hero = () => {
           Any Item Not Currently On The Site Is Out Of Stock And Undergoing Restock
         </h2>
         <Button className="bg-barbie-pink text-white w-[200px] border border-transparent  transition-colors duration-300 ease-in-out hover:bg-white hover:text-barbie-pink hover:border-barbie-pink">
-            Learn More
+            <Link href={'/products'}>
+            View Availabe Products
+            </Link>
         </Button>
       </div>
     </div>

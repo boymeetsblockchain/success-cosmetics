@@ -87,21 +87,22 @@ export const Navbar = () => {
         </div>
       </div>
       {menuOpen && (
-        <div className="md:hidden">
+        <div className="absolute top-0 left-0 right-0 bg-white z-50">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link href="/profile" className=" px-3 py-2 rounded-md text-base flex gap-x-3 items-center font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-            <Avatar>
-                  <AvatarImage src="https://github.com/shadcn.png" />
-                  <AvatarFallback>SI</AvatarFallback>
-                </Avatar>
-                <p className="font-medium text-xs md:text-sm">Hi, Success</p>
+            <Link href="/profile" className="px-3 py-2 rounded-md text-base flex gap-x-3 items-center font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>SI</AvatarFallback>
+              </Avatar>
+              <p className="font-medium text-xs md:text-sm">Hi, Success</p>
             </Link>
-            <Link href="/" className="flex gap-x-3 items-center  px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"><Home/>Home</Link>
-          
-            <Link href="/cart" className=" px-3 py-2 rounded-md text-base font-medium flex gap-x-3 items-center  text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+            <Link href="/" className="flex gap-x-3 items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+              <Home />Home
+            </Link>
+            <Link href="/cart" className="px-3 py-2 rounded-md text-base font-medium flex gap-x-3 items-center text-gray-700 hover:text-gray-900 hover:bg-gray-50">
               <ShoppingCart /> Cart
             </Link>
-            <Link href="/signout" className="flex gap-x-3 items-center  px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+            <Link href="/signout" className="flex gap-x-3 items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
               <LogOut /> SignOut
             </Link>
             <div className="relative flex items-center px-3 py-2">

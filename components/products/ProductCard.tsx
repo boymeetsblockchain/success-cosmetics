@@ -1,3 +1,4 @@
+"use client"
 import {
     Card,
     CardContent,
@@ -6,18 +7,24 @@ import {
   } from "@/components/ui/card"
 import Image from "next/image"
 import { Button } from "../ui/button"
-
+import { useRouter } from "next/navigation"
   
 interface ProductCardProps {
     src:string,
     name:string,
-    price:number
+    price:number,
+    id:number | string,
 }
 
 
-export const ProductCard = ({src,name,price}:ProductCardProps)=>{
+export const ProductCard = ({src,name,price,id}:ProductCardProps)=>{
+  const router= useRouter()
+
+  const viewProducts= (id: string| number)=>{
+   router.push(`/products/${id}`)
+  }
    return(
-    <Card  className="w-[302px] flex items-center relative flex-col py-6 h-[420px] justify-center ">
+    <Card  className="w-[302px] flex items-center relative flex-col py-6 h-[420px] justify-center cursor-pointer " onClick={()=>viewProducts(id)}>
     <CardContent  >
       <div className="max-h-[350px]">
       <Image src={`/${src}`} width={250} height={350} alt="products" className=" transition-all duration-300 ease-in-out hover:scale-105  "  />
