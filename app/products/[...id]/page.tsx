@@ -14,7 +14,14 @@ function getProductById(id: number): Product | undefined {
 
 function ProductPage() {
   const { id } = useParams();
-  const productId = parseInt(id);
+  let productId: number;
+
+  if (Array.isArray(id)) {
+    productId = parseInt(id[0]);
+  } else {
+    productId = parseInt(id);
+  }
+
   const product = getProductById(productId);
 
   const [quantity, setQuantity] = useState(1);
@@ -52,9 +59,9 @@ function ProductPage() {
       </div>
       <div className="flex flex-1 flex-col items-start gap-y-3">
         <h1 className={cn("text-3xl md:text-4xl font-medium text text-wrap", work.className)}>{product.name}</h1>
-        <h1 className={cn("text-lg text text-wrap")}>{product.description}</h1>
+        <h1 className={cn("text-lg text text-wrap text-justify")}>{product.description}</h1>
         <p className="text-green-600 mt-1 font-bold">₦{product.price}</p>
-        <small className={cn("text-green-400 text-xs",work.className)}>Available</small>
+        <small className={cn("text-green-400 text-xs", work.className)}>Available</small>
         <div className="flex items-center gap-2 mt-4">
           <Button onClick={handleDecrement} className="bg-gray-200 text-gray-800 hover:bg-destructive hover:text-white px-4">-</Button>
           <span className="text-xl">{quantity}</span>
