@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "src": "cerave.jpg",
+    "name": "CeraVe Foaming 473ml Cleanser(Uk Version)",
+    "price": 18500,
+    "description": "A foaming facial cleanser for normal to oily skin that helps remove dirt and oil without disrupting the skin's natural barrier."
+  },
+  {
+    "id": 2,
+    "src": "lize.jpg",
+    "name": "Cosrx The Vitamin C 23 Serum",
+    "price": 18500,
+    "description": "A powerful Vitamin C serum that helps brighten and even out skin tone while reducing the appearance of fine lines."
+  },
+  {
+    "id": 3,
+    "src": "lotion.jpg",
+    "name": "Dr Teals Body Lotion-Vitamin C —532ml (18oz)",
+    "price": 11000,
+    "description": "Dr Teal's body lotion is formulated with moisturizing ingredients plus beneficial essential oils to nourish and renew skin. This restorative blend will soothe away stress and help restore your skin's natural balance. Vitamin C helps promote glowing, youthful skin, while Citrus essential oils help uplift your mood."
+  },
+  {
+    "id": 4,
+    "src": "serum.jpg",
+    "name": "Beauty Formulas Illuminating Serum 10% Niacinamide -30ml",
+    "price": 6500,
+    "description": "Targets uneven texture and tone, encouraging clear skin."
+  },
+  {
+    "id": 5,
+    "src": "sugar.jpg",
+    "name": "Dr Teals Shea Sugar Scrub with Citrus, Vitamin C & Essential Oils 538g (19oz)",
+    "price": 13500,
+    "description": "Dr Teal's Shea Sugar Body Scrub is formulated with Shea Butter, Sugar, and Essential Oil to exfoliate and smooth skin. Citrus essential oil helps uplift your mood, while vitamin C, shea butter, orange oil and coconut oil leave the skin moisturized and glowing."
+  },
+  {
+    "id": 6,
+    "src": "wash.jpg",
+    "name": "Dr Teals Body Wash -prebiotic lemon balm - 710ml",
+    "price": 18500,
+    "description": "Gentle cleansers help clean and condition while moisturizing ingredients help skin stay soft and supple. Prebiotic Lemon Balm helps keep your skin in healthy balance. Natural essential oils help calm the mind and uplift the mood when you need it the most. Made with Pure Epsom Salt to ease aches and soreness from muscle pains while refreshing skin's appearance. Paraben free, phthalate free, and never tested on animals."
+  },
+  {
+    "id": 7,
+    "src": "simple.jpg",
+    "name": "Simple replenishing rich moisturizer-125m",
+    "price": 11000,
+    "description": "Simple Replenishing Rich Moisturiser is a vitamin-rich, replenishing moisturiser to help smooth and soften skin. Made with only the purest ingredients, for sensitive skin. Dermatologically tested, non-comodegenic and hypoallergenic. No artificial colour, perfume or harsh chemicals that can upset your skin. Perfect for sensitive skin."
+  },
+  {
+    "id": 8,
+    "src": "garnier.jpg",
+    "name": "Garnier Bright Complete Extra Body Lotion -400ml",
+    "price": 12000,
+    "description": "Say hello to smooth, and hydrated skin with the new Garnier bright body lotion! The Garnier Bright Complete Body Lotion is enriched with lemon essence proven to brighten your skin with moisture-repairing nutrients and to strengthen your skin's protective barrier. Keep your skin locked in hydration while fading dark spots and illuminating your skin tone. Combined with UVA/UVB filters, the Bright Complete Body Lotion hydrates, brightens your skin and provides sun protection in just one simple step. Non-sticky and moisturizing with instantly absorbing serum texture, get soft, intensely hydrated skin and improved body skin brightness in a week with the bright complete body lotion. It has been dermatologically tested and is suitable for all skin types."
+  }
+]
