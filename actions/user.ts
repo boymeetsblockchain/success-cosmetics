@@ -1,11 +1,10 @@
 "use server";
 
 import bcrypt from "bcryptjs";
-import User from "@/models/User";
 import { redirect } from "next/navigation";
-import connectDb from "@/lib/db";
 import { CredentialsSignin } from "next-auth";
 import { signIn } from "@/auth";
+import { db } from "@/lib/db";
 
 const register = async (formData: FormData) => {
   const name = formData.get("fullname") as string | null;
@@ -16,23 +15,28 @@ const register = async (formData: FormData) => {
     throw new Error("Missing required fields");
   }
 
-  await connectDb()
+  // check if user exists
+  const userExist = await db.user.findUnique({
+    where:{
+      email
+    }
+  })
 
-  const userExist = await User.findOne({ email });
-  if (userExist) {
-    throw new Error("User already exists");
+  if(userExist){
+    throw new Error ("Email Exists")
   }
 
+  // hash password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = new User({
-    name,
-    email,
-    password: hashedPassword,
-  });
-
-  await user.save();
-  redirect('/login')
+  const newUser = await db.user.create({
+    data:{
+      name,
+      email,
+      password :hashedPassword,
+    }
+  })
+  console.log("User created", newUser)
 };
 
 const login = async (formData:FormData)=>{
