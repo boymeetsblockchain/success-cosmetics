@@ -67,5 +67,19 @@ const getAllProducts = async () => {
   };
 
   
+  const getSingleProductById = async (productId: string) => {
+    try {
+        const product = await db.product.findUnique({
+            where: {
+                id: productId,
+            },
+        });
+        return product;
+    } catch (error) {
+        console.error('Failed to fetch product:', error);
+        throw new Error('Failed to fetch product');
+    }
+};
 
-export { addNewProduct ,getAllProducts };
+
+export { addNewProduct ,getAllProducts ,getSingleProductById};

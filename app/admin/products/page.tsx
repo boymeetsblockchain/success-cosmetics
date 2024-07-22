@@ -1,4 +1,5 @@
 import { getAllProducts } from "@/helpers/product";
+import Link from "next/link";
 
 const AdminProducts = async() => {
     const  products = await getAllProducts()
@@ -23,6 +24,9 @@ const AdminProducts = async() => {
                     <td className="py-2 text-center">{product.name}</td>
                     <td className="py-2 text-center">{product.price}</td>
                     <td className="py-2 text-center">{product.quantity}</td>
+                    <Link className="bg-barbie-pink text-white py-2 px-3" href={`/admin/products/${product.id}`}>
+                      View 
+                    </Link>
                   </tr>
                 ))}
               </tbody>

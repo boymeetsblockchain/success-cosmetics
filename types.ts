@@ -8,3 +8,14 @@ export interface Product {
     quantity?:number
   }
   
+
+export interface ProductTypes{
+  id: string;
+  name: string;
+  description: string | null;
+  price: number;
+  quantity: number;
+  imageUrl: string | null;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
