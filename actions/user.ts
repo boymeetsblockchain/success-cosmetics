@@ -36,7 +36,7 @@ const register = async (formData: FormData) => {
       password :hashedPassword,
     }
   })
-  console.log("User created", newUser)
+  redirect('/login')
 };
 
 const login = async (formData:FormData)=>{
