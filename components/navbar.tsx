@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { work } from "@/font";
+import { work, great} from "@/font";
 import Link from "next/link";
 import { Input } from "./ui/input";
 import { useSession } from "next-auth/react";
@@ -21,9 +21,9 @@ export const Navbar = () => {
   return (
     <nav className={cn("sticky top-0 left-0 right-0 z-50 bg-white shadow", work.className)}>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="flex h-12 items-center justify-between">
+        <div className="flex h-14 items-center justify-between">
           <Link href="/" className="flex flex-shrink-0 items-center">
-            <h1>LOGO</h1>
+            <h1 className={cn("text-2xl font-bold",great.className)}>Success Cosmetics</h1>
           </Link>
           {status === "authenticated" ? (
             <>
@@ -96,10 +96,10 @@ export const Navbar = () => {
         </div>
       </div>
       {menuOpen && (
-        <div className="fixed inset-0 h-auto bg-white z-50">
+        <div className="fixed inset-0 h-[280px] py-3 bg-white z-50">
           <div className="flex justify-between items-center px-4 py-3 border-b">
             <Link href="/" className="flex flex-shrink-0 items-center">
-              <h1>LOGO</h1>
+            <h1 className={cn("text-2xl font-bold",great.className)}>Success Cosmetics</h1>
             </Link>
             <button
               onClick={() => setMenuOpen(false)}
@@ -131,7 +131,7 @@ export const Navbar = () => {
                   </Avatar>
                   <p className="font-medium text-xs md:text-sm">Hi, {session?.user?.name}</p>
                 </Link>
-              <div className="flex items-center gap-y-3">
+              <div className="flex items-start px-3 py-2 flex-col gap-y-3">
               <Link href="/" className="flex gap-x-3 items-center  rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
                   <LogOut /> SignOut
                 </Link>
