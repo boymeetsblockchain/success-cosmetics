@@ -7,12 +7,15 @@ import { redirect } from "next/navigation";
 const addNewProduct = async (formData: FormData) => {
     const image = formData.get('image') as File
     const name = formData.get("name") as string | null;
+    const category = formData.get("category") as string | null;
     const priceString = formData.get("price") as string | null;
     const description = formData.get("description") as string | null;
 
-    if (!name || !description || !priceString) {
+    if (!name || !description || !priceString || !category) {
         throw new Error("Missing required fields");
     }
+
+
 
     const arrayBuffer = await image.arrayBuffer()
     const buffer = new Uint8Array(arrayBuffer)
@@ -43,7 +46,8 @@ const addNewProduct = async (formData: FormData) => {
             price,
             description,
             quantity: 1,
-            imageUrl
+            imageUrl,
+            category
         }
     });
 

@@ -21,8 +21,9 @@ export const Footer =()=>{
                      </div>
                      <div className="flex space-y-3 flex-col">
                      <h1 className="text-lg text-left font-medium">CONTACT US</h1>
-                     <span className="flex gap-x-3 text-20px"><PhoneCall/>08141889944</span>
-                     <span className="flex gap-x-3 text-20px"><MapPinIcon/>No 81 adesuwa road by water resources junction, Benin City. Edo Nigeria. 300001</span>
+                     <span className="flex gap-x-3 text-20px"><PhoneCall/>08159473033
+                     </span>
+                     <span className="flex gap-x-3 text-20px"><MapPinIcon/>Ugbowo,Benin city</span>
                      <div>
                         <Image src={'/accepted.png'} width={150} height={20} alt="accepted"/>
                      </div>

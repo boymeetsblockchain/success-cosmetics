@@ -14,6 +14,7 @@ const AdminProducts = async() => {
                   <th className="py-2 text-center">No</th>
                   <th className="py-2 text-center">Name</th>
                   <th className="py-2 text-center">Price</th>
+                  <th className="py-2 text-center">Category</th>
                   <th className="py-2 text-center">Quantity left</th>
                 </tr>
               </thead>
@@ -23,6 +24,7 @@ const AdminProducts = async() => {
                     <td className="py-2 text-center">{index +1 }</td>
                     <td className="py-2 text-center">{product.name}</td>
                     <td className="py-2 text-center">{product.price}</td>
+                    <td className="py-2 text-center">{product.category}</td>
                     <td className="py-2 text-center">{product.quantity}</td>
                     <Link className="bg-barbie-pink text-white py-2 px-3" href={`/admin/products/${product.id}`}>
                       View 

@@ -3,7 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@radix-ui/react-label";
 import { addNewProduct } from "@/actions/product";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
 
+  
 const AdminAddProductPage = () => {
     return (
         <div className="flex items-center justify-center min-h-screen max-w-4xl mx-auto px-4 py-8">
@@ -19,6 +27,21 @@ const AdminAddProductPage = () => {
                             className="focus:outline-none w-full py-2 px-4 border rounded-md border-gray-300"
                             placeholder="Enter Product Name"
                         />
+                    </div>
+                    <div>
+                    <Label htmlFor="price" className="block text-sm mb-2 font-medium text-gray-700">Price</Label>
+                    <Select name="category">
+  <SelectTrigger className="w-[180px]" > 
+    <SelectValue placeholder="Select a Category" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="bathandbody">Bath and Body</SelectItem>
+    <SelectItem value="Face">Face</SelectItem>
+    <SelectItem value="Treatments">Treatments</SelectItem>
+    <SelectItem value="perfumesandbodysprays">Perfumes and BodySprays</SelectItem>
+  </SelectContent>
+</Select>
+
                     </div>
                     <div>
                         <Label htmlFor="description" className="block text-sm mb-2 font-medium text-gray-700">Product Description</Label>
