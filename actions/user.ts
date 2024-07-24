@@ -50,8 +50,7 @@ const login = async (formData:FormData)=>{
       password,
     });
   } catch (error) {
-    const someError = error as CredentialsSignin;
-    return someError.cause;
+    return { error: "Invalid Email or password" };
   }
   redirect("/");
 }
