@@ -18,6 +18,7 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const { data: session, status } = useSession();
 
+
   return (
     <nav className={cn("sticky top-0 left-0 right-0 z-50 bg-white shadow", work.className)}>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -49,6 +50,13 @@ export const Navbar = () => {
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
+                {
+                  session.user.role=== "ADMIN" && (
+                    <Link href={'/admin'} className="bg-barbie-pink text-white py-2 px-3 hover:bg-white hover:text-barbie-pink shadow-md border-barbie-pink border">
+                      Admin Panel
+                    </Link>
+                  )
+                }
                 <Link href={'/cart'}>
                   <ShoppingCart size={24} />
                 </Link>
@@ -135,6 +143,13 @@ export const Navbar = () => {
               <Link href="/" className="flex gap-x-3 items-center  rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
                   <LogOut /> SignOut
                 </Link>
+                {
+                  session.user.role=== "ADMIN" && (
+                    <Link href={'/admin'} className="bg-barbie-pink text-white py-2 px-3 hover:bg-white hover:text-barbie-pink shadow-md border-barbie-pink border">
+                      Admin Panel
+                    </Link>
+                  )
+                }
                 <Link href={'/cart'} className="flex gap-x-3 items-center  rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
                   <ShoppingCart /> Cart
                 </Link>

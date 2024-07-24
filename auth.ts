@@ -2,9 +2,8 @@ import NextAuth, { CredentialsSignin } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { compare } from "bcryptjs";
 import { PrismaAdapter } from "@auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
 import { db } from "./lib/db";
-import credentials from "next-auth/providers/credentials";
+import { getUserById } from "./utils/user";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter:PrismaAdapter(db),
@@ -48,6 +47,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
      }
     })
   ],
+
+  callbacks: {
+    async session({ session, token }) {
+      if (token && session.user) {
+        session.user.id = token.sub as string;
+        session.user.role = token.role as string;
+      }
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.sub = user.id;
+        token.role = user.role; // Include role in token
+      } else if (token.sub) {
+        // Retrieve user from database if user is not present in token
+        const existingUser = await getUserById(token.sub as string);
+        if (existingUser) {
+          token.role = existingUser.role;
+        }
+      }
+      return token;
+    },
+  },
+
   pages: {
     signIn: "/login",
   },

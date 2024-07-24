@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { getAllProducts } from "@/helpers/product";
 import Link from "next/link";
 
@@ -34,7 +35,12 @@ const AdminProducts = async() => {
               </tbody>
             </table>
           ) : (
-            <p>No products available</p>
+            <div className="flex items-center justify-center flex-col space-y-4">
+              <h1 className="text-3xl font-bold ">No Product Yet Add new Product</h1>
+              <Link href={'/admin/addproduct'} className="bg-barbie-pink text-white  hover:bg-white hover:text-barbie-pink shadow-md py-2 px-3">
+                Add New Product
+              </Link>
+            </div>
           )}
         </div>
       </div>

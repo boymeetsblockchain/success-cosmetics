@@ -10,12 +10,12 @@ const addNewProduct = async (formData: FormData) => {
     const category = formData.get("category") as string | null;
     const priceString = formData.get("price") as string | null;
     const description = formData.get("description") as string | null;
+    
+    console.log(image)
 
-    if (!name || !description || !priceString || !category) {
+    if (!name || !description || !priceString || !category || !image) {
         throw new Error("Missing required fields");
     }
-
-
 
     const arrayBuffer = await image.arrayBuffer()
     const buffer = new Uint8Array(arrayBuffer)
@@ -86,4 +86,19 @@ const getAllProducts = async () => {
 };
 
 
-export { addNewProduct ,getAllProducts ,getSingleProductById};
+const deleteSingleProduct = async(productId: string)=>{
+  try {
+     const product = await db.product.delete({
+      where:{
+        id:productId
+      }
+     })
+     redirect('/admin/products')
+     return true
+  } catch (error) {
+    console.error('Failed to fetch product:', error);
+        throw new Error('Failed to fetch product');
+  }
+}
+
+export { addNewProduct ,getAllProducts ,getSingleProductById,deleteSingleProduct};

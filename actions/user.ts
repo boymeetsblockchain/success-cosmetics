@@ -56,4 +56,7 @@ const login = async (formData:FormData)=>{
   redirect("/");
 }
 
-export { register,login };
+
+
+
+export { register,login}
