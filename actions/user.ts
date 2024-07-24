@@ -52,7 +52,9 @@ const login = async (formData:FormData)=>{
   } catch (error) {
     return { error: "Invalid Email or password" };
   }
-  redirect("/");
+
+  redirect('/')
+ 
 }
 
 

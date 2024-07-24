@@ -3,38 +3,15 @@ import { login } from "@/actions/user";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-const LoginPage = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState<string | null>(null);
-    const router = useRouter();
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-    
-        const formData = new FormData();
-        formData.append("email", email);
-        formData.append("password", password);
-    
-        const response = await login(formData);
-    
-        if (response?.error) {
-          setError(response.error);
-        } else {
-          setError(null);
-          router.push("/");
-        }
-      };
-    
+const LoginPage = () => {    
     return ( 
         <div className="my-10 px-4 md:px-6 lg:px-8 flex items-center justify-center">
             <div className="w-full md:w-[500px] p-6 h-auto shadow-lg shadow-black/10 bg-white rounded-lg">
             <h1 className="my-4 text-center font-medium text-3xl">Welcome Back!</h1>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                {error && <div className="text-red-500">{error}</div>}
+                <form action={login} className="space-y-6">
+         
                 <div>
                         <Label htmlFor="email" className="block text-sm mb-2 font-medium text-gray-700">Email</Label>
                         <Input 
