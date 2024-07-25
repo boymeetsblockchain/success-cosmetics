@@ -1,28 +1,33 @@
 "use client";
 import { useParams } from "next/navigation";
-import { useState } from "react";
-import { Product } from "@/types";
-import products from "@/data/products.json";
+import { useEffect, useState } from "react";
+import { ProductTypes } from "@/types";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { work } from "@/font";
 import { Button } from "@/components/ui/button";
+import { getSingleProductById } from "@/actions/product";
 
-function getProductById(id: number): Product | undefined {
-  return products.find((product: Product) => product.id === id);
-}
-
-function ProductPage() {
+const ProductPage = () => {
+  const [product, setProduct] = useState<ProductTypes | null>(null);
   const { id } = useParams();
-  let productId: number;
-
+  
+  let productId: string;
   if (Array.isArray(id)) {
-    productId = parseInt(id[0]);
+    productId = id[0]; // Extract the first element from the array
   } else {
-    productId = parseInt(id);
+    productId = id;
   }
-
-  const product = getProductById(productId);
+  
+  useEffect(() => {
+    const fetchProduct = async () => {
+      if (productId) {
+        const productById = await getSingleProductById(productId);
+        setProduct(productById);
+      }
+    };
+    fetchProduct();
+  }, [productId]);
 
   const [quantity, setQuantity] = useState(1);
 
@@ -45,21 +50,21 @@ function ProductPage() {
       <div className="images flex gap-x-10 flex-1">
         <div className="flex-col items-center gap-y-4 hidden md:flex">
           <div className="min-h-[100px] min-w-[200px] border flex items-center justify-center shadow-lg shadow-black/20 py-4">
-            <Image src={`/${product.src}`} width={150} height={70} alt={product.name} />
+            {product.imageUrl && <Image src={product.imageUrl} width={150} height={70} alt={product.name} />}
           </div>
           <div className="min-h-[100px] min-w-[200px] border flex items-center justify-center shadow-lg shadow-black/20 py-4">
-            <Image src={`/${product.src}`} width={150} height={70} alt={product.name} />
+            {product.imageUrl && <Image src={product.imageUrl} width={150} height={70} alt={product.name} />}
           </div>
         </div>
         <div>
-          <div className="min-h-[100px] min-w-[200px] border flex items-center justify-center shadow-lg shadow-black/20 py-4">
-            <Image src={`/${product.src}`} width={500} height={400} alt={product.name} />
+          <div className="min-h-[100px] min-w-[200px] w-auto h-auto border flex items-center justify-center shadow-lg shadow-black/20 py-4">
+            {product.imageUrl && <Image src={product.imageUrl} width={500} height={400} alt={product.name} />}
           </div>
         </div>
       </div>
       <div className="flex flex-1 flex-col items-start gap-y-3">
-        <h1 className={cn("text-3xl md:text-4xl font-medium text text-wrap", work.className)}>{product.name}</h1>
-        <h1 className={cn("text-lg text text-wrap text-justify")}>{product.description}</h1>
+        <h1 className={cn("text-3xl md:text-4xl font-medium text-wrap", work.className)}>{product.name}</h1>
+        <h1 className="text-lg text-wrap text-justify">{product.description}</h1>
         <p className="text-green-600 mt-1 font-bold">₦{product.price}</p>
         <small className={cn("text-green-400 text-xs", work.className)}>Available</small>
         <div className="flex items-center gap-2 mt-4">
@@ -73,6 +78,6 @@ function ProductPage() {
       </div>
     </div>
   );
-}
+};
 
 export default ProductPage;

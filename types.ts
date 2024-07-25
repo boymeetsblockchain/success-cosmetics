@@ -14,6 +14,7 @@ export interface ProductTypes{
   name: string;
   description: string | null;
   price: number;
+  category:string;
   quantity: number;
   imageUrl: string | null;
   createdAt?: Date;
