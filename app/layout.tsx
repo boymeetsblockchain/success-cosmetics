@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { SessionProvider } from "next-auth/react";
+import  {Toaster} from 'react-hot-toast'
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
 
         <Footer />
       </SessionProvider>
+      <Toaster/>
       </body>
     </html>
   );

@@ -2,7 +2,6 @@
 
 import bcrypt from "bcryptjs";
 import { redirect } from "next/navigation";
-import { CredentialsSignin } from "next-auth";
 import { signIn } from "@/auth";
 import { db } from "@/lib/db";
 
@@ -12,31 +11,33 @@ const register = async (formData: FormData) => {
   const password = formData.get("password") as string | null;
 
   if (!name || !email || !password) {
-    throw new Error("Missing required fields");
+      return { error: "Missing required fields" };
   }
 
   // check if user exists
   const userExist = await db.user.findUnique({
-    where:{
-      email
-    }
-  })
+      where: { email }
+  });
 
-  if(userExist){
-    throw new Error ("Email Exists")
+  if (userExist) {
+      return { error: "Email already exists" };
   }
 
   // hash password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const newUser = await db.user.create({
-    data:{
-      name,
-      email,
-      password :hashedPassword,
-    }
-  })
-  redirect('/login')
+  try {
+      await db.user.create({
+          data: {
+              name,
+              email,
+              password: hashedPassword,
+          }
+      });
+      return { success: true };
+  } catch (error) {
+      return { error: "Something went wrong" };
+  }
 };
 
 const login = async (formData:FormData)=>{
