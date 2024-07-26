@@ -21,13 +21,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={urbanist.className}>
-      <SessionProvider>
+      
+       <SessionProvider>
       <Navbar />
           {children}
 
         <Footer />
       </SessionProvider>
       <Toaster/>
+  
       </body>
     </html>
   );

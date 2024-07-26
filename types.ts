@@ -12,11 +12,11 @@ export interface Product {
 export interface ProductTypes{
   id: string;
   name: string;
-  description: string | null;
+  description?: string | null;
   price: number;
-  category:string;
-  quantity: number;
-  imageUrl: string | null;
+  category?:string;
+  quantity?: number;
+  imageUrl?: string | null;
   createdAt?: Date;
   updatedAt?: Date;
 }

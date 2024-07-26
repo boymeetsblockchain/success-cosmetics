@@ -37,7 +37,7 @@ const CartPage = () => {
 
   useEffect(() => {
     calculateTotalPrice();
-  }, [cartProducts]);
+  },);
 
   return (
     <div className="my-10 px-4 md:px-6 lg:px-8 flex flex-col items-center">
