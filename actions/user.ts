@@ -56,6 +56,10 @@ const login = async (formData:FormData)=>{
 }
 
 
+const getUsers = async()=>{
+  const users = await db.user.findMany({})
+  return users
+}
 
 
-export { register,login}
+export { register,login,getUsers}

@@ -13,12 +13,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { signOut } from "next-auth/react"
+import toast from "react-hot-toast";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const { data: session, status } = useSession();
 
-
+const onSignOut =()=>{
+  toast.success("Successfully Logged out")
+  signOut()
+}
   return (
     <nav className={cn("sticky top-0 left-0 right-0 z-50 bg-white shadow", work.className)}>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -44,12 +49,16 @@ export const Navbar = () => {
                     <p className="font-medium text-xs md:text-sm">Hi, {session?.user?.name}</p>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
-                    <DropdownMenuItem className="flex items-center gap-x-3">
+                    <DropdownMenuItem className="flex items-center gap-x-3" onClick={onSignOut} >
                       <LogOut />
                       <span className="text-sm font-medium">SignOut</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
+          
+                <Link href={'/cart'}>
+                  <ShoppingCart size={24} />
+                </Link>
                 {
                   session.user.role=== "ADMIN" && (
                     <Link href={'/admin'} className="bg-barbie-pink text-white py-2 px-3 hover:bg-white hover:text-barbie-pink shadow-md border-barbie-pink border">
@@ -57,9 +66,6 @@ export const Navbar = () => {
                     </Link>
                   )
                 }
-                <Link href={'/cart'}>
-                  <ShoppingCart size={24} />
-                </Link>
               </div>
             </>
           ) : (
@@ -140,9 +146,9 @@ export const Navbar = () => {
                   <p className="font-medium text-xs md:text-sm">Hi, {session?.user?.name}</p>
                 </Link>
               <div className="flex items-start px-3 py-2 flex-col gap-y-3">
-              <Link href="/" className="flex gap-x-3 items-center  rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
+              <p className="flex gap-x-3 items-center  rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" onClick={onSignOut}>
                   <LogOut /> SignOut
-                </Link>
+                </p>
                 {
                   session.user.role=== "ADMIN" && (
                     <Link href={'/admin'} className="bg-barbie-pink text-white py-2 px-3 hover:bg-white hover:text-barbie-pink shadow-md border-barbie-pink border">
