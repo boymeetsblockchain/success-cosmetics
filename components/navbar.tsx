@@ -15,11 +15,14 @@ import {
 import { cn } from "@/lib/utils";
 import { signOut } from "next-auth/react"
 import toast from "react-hot-toast";
+import useCartStore from "@/store/cart";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const { data: session, status } = useSession();
-
+  const { cartItems } = useCartStore();
+ const cartCount = cartItems.length;
+  console.log(cartCount)
 const onSignOut =()=>{
   toast.success("Successfully Logged out")
   signOut()
@@ -56,9 +59,12 @@ const onSignOut =()=>{
                   </DropdownMenuContent>
                 </DropdownMenu>
           
-                <Link href={'/cart'}>
-                  <ShoppingCart size={24} />
-                </Link>
+                <Link href={'/cart'} className="relative inline-block">
+  <ShoppingCart size={24} className="text-gray-800" />
+  <small className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-barbie-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center border-2 border-white">
+    {cartCount}
+  </small>
+</Link>
                 {
                   session.user.role=== "ADMIN" && (
                     <Link href={'/admin'} className="bg-barbie-pink text-white py-2 px-3 hover:bg-white hover:text-barbie-pink shadow-md border-barbie-pink border">
@@ -72,9 +78,12 @@ const onSignOut =()=>{
             <div className="hidden md:flex items-center gap-x-3">
               <Link href={'/register'} className="text-sm font-medium hover:text-barbie-pink">Register</Link>
               <Link href={'/login'} className="text-sm font-medium hover:text-barbie-pink">Login</Link>
-              <Link href={'/cart'}>
-                <ShoppingCart size={24} />
-              </Link>
+              <Link href={'/cart'} className="relative inline-block">
+  <ShoppingCart size={24} className="text-gray-800" />
+  <small className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-barbie-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center border-2 border-white">
+    {cartCount}
+  </small>
+</Link>
             </div>
           )}
           <div className="md:hidden flex items-center">
@@ -156,9 +165,12 @@ const onSignOut =()=>{
                     </Link>
                   )
                 }
-                <Link href={'/cart'} className="flex gap-x-3 items-center  rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                  <ShoppingCart /> Cart
-                </Link>
+                            <Link href={'/cart'} className="relative inline-block">
+  <ShoppingCart size={24} className="text-gray-800" />
+  <small className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-barbie-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center border-2 border-white">
+    {cartCount}
+  </small>
+</Link>
               </div>
                 <div className="relative flex items-center px-3 py-2">
                   <Input className="pl-10 pr-4 py-2 border rounded-lg w-full" placeholder="Search..." />
@@ -172,9 +184,12 @@ const onSignOut =()=>{
              <div className="flex ltems-center flex-col space-y-4 ">
              <Link href={'/register'} className="text-sm font-medium hover:text-barbie-pink">Register</Link>
                 <Link href={'/login'} className="text-sm font-medium hover:text-barbie-pink">Login</Link>
-                <Link href={'/cart'} className="flex gap-x-3 items-center  rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
-                  <ShoppingCart /> Cart
-                </Link>
+                <Link href={'/cart'} className="relative inline-block">
+  <ShoppingCart size={24} className="text-gray-800" />
+  <small className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-barbie-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center border-2 border-white">
+    {cartCount}
+  </small>
+</Link>
              </div>
               </>
             )}

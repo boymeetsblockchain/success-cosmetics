@@ -8,23 +8,30 @@ import {
 import Image from "next/image"
 import { Button } from "../ui/button"
 import { useRouter } from "next/navigation"
+import useCartStore from "@/store/cart"
+import toast from "react-hot-toast"
   
 interface ProductCardProps {
     src:string,
     name:string,
     price:number,
-    id:number | string,
+    id: string,
 }
 
 
 export const ProductCard = ({src,name,price,id}:ProductCardProps)=>{
-  const router= useRouter()
+  const router= useRouter() 
+  const {addItemToCart,cartItems}= useCartStore()
+  const onAddToCart = () => {
+    addItemToCart({name,price,id, imageUrl:src});
+    toast.success("Added to cart");
+  };
 
   const viewProducts= (id: string| number)=>{
    router.push(`/products/${id}`)
   }
    return(
-    <Card  className="w-[302px] flex items-center relative flex-col py-6 h-[500px] justify-center cursor-pointer " onClick={()=>viewProducts(id)}>
+    <Card  className="w-[302px] flex items-center relative flex-col py-6 h-[500px] justify-center cursor-pointer ">
     <CardContent  >
       <div className="max-h-[350px]">
       <Image src={src} width={250} height={350} alt="products" className=" transition-all duration-300 ease-in-out hover:scale-105  "  />
@@ -36,7 +43,9 @@ export const ProductCard = ({src,name,price,id}:ProductCardProps)=>{
     </CardContent>
 
     <CardFooter>
-    <Button className="bg-barbie-pink text-white w-[200px] border absolute bottom-4 right-10 transition-colors duration-300 ease-in-out hover:bg-white hover:text-barbie-pink hover:border-barbie-pink">
+    <Button 
+     onClick={onAddToCart}
+    className="bg-barbie-pink text-white w-[200px] border absolute bottom-4 right-10 transition-colors duration-300 ease-in-out hover:bg-white hover:text-barbie-pink hover:border-barbie-pink">
       Add to Cart
     </Button>
     </CardFooter>

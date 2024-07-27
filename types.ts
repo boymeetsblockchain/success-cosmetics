@@ -1,14 +1,3 @@
-// types.ts
-export interface Product {
-    id: number;
-    src: string;
-    name: string;
-    price: number;
-    description: string;
-    quantity?:number
-  }
-  
-
 export interface ProductTypes{
   id: string;
   name: string;
@@ -16,11 +5,21 @@ export interface ProductTypes{
   price: number;
   category?:string;
   quantity?: number;
-  imageUrl?: string | null;
+  imageUrl?: string | null
   createdAt?: Date;
   updatedAt?: Date;
 }
 
+export interface ProductCardProps {
+  imageUrl:string| null ;
+  name:string,
+  price:number,
+  id: string,
+}
+
+export type CartProduct = ProductCardProps & {
+  quantity: number;
+};
 
 export interface User {
   id: string;
