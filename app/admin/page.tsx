@@ -12,7 +12,7 @@ async function page () {
         <div className="flex space-x-4 items-center justify-center">
             <Button className="bg-barbie-pink text-white hover:text-white hover:bg-barbie-pink">
                <Link href={'/admin/products'}>
-                View Produxts
+                View Products
                </Link>
             </Button>
             <Button className="bg-barbie-pink text-white hover:text-white hover:bg-barbie-pink">

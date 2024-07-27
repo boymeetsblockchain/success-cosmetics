@@ -44,14 +44,14 @@ const CartItemCard = ({ product }: CardProductProps) => {
               />
             </td>
             <td className="w-1/2 text-center">
-              <h3 className="text-lg font-bold">{product.name}</h3>
-              <p className="text-green-600 font-medium text-lg mt-2">
+              <h3 className="text-xs md:text-lg font-bold">{product.name}</h3>
+              <p className="text-green-600 font-medium text-xs md:text-lg mt-2">
                 {new Intl.NumberFormat("en-US", {
                   style: "currency",
                   currency: "NGN",
                 }).format(product.price * product.quantity)}
               </p>
-              <p className="text-gray-700 font-medium mt-2">
+              <p className="text-gray-700 font-medium text-sm mt-2">
                 Quantity: {product.quantity}
               </p>
             </td>
@@ -60,23 +60,23 @@ const CartItemCard = ({ product }: CardProductProps) => {
                 <button
                   onClick={() => onIncreaseQuantity(product.id)}
                   title="Increase quantity"
-                  className="bg-barbie-pink p-2 text-white rounded-full hover:bg-pink-600 transition-colors"
+                  className="bg-green-500 p-2 text-white rounded-full hover:bg-green-800 transition-colors"
                 >
-                  <Plus />
+                  <Plus size={20} />
                 </button>
                 <button
                   onClick={() => onDecreaseQuantity(product.id)}
                   title="Decrease quantity"
-                  className="bg-barbie-pink p-2 text-white rounded-full hover:bg-pink-600 transition-colors"
+                  className="bg-orange-400 p-2 text-white rounded-full hover:bg-orange-500 transition-colors"
                 >
-                  <Minus />
+                  <Minus size={20} />
                 </button>
                 <button
                   onClick={() => onRemoveItem(product.id)}
                   title="Remove item from cart"
                   className="bg-red-600 p-2 text-white rounded-full hover:bg-red-700 transition-colors"
                 >
-                  <Trash2 />
+                  <Trash2 size={20} />
                 </button>
               </div>
             </td>

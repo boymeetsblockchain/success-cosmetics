@@ -37,7 +37,7 @@ const OrderValue = () => {
 
       <div className="flex justify-center ">
         <Link href="/order/checkout">
-          <Button className="text-xl font-bold text-barbie-pink bg-white transition-colors duration-300 rounded-lg px-8 py-3">
+          <Button className="text-xl font-bold text-barbie-pink hover:bg-barbie-pink hover:text-white bg-white transition-colors duration-300 rounded-lg px-8 py-3">
             Checkout
           </Button>
         </Link>

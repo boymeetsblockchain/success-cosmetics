@@ -23,12 +23,12 @@ const CartPage = () => {
   }
 
   return ( 
-    <div className="px-4">
+    <div className="p-4">
     <div className="">
       {cartItems?.map((item) => (
         <CartItemCard product={item} key={item.id} />
       ))}
-      <div className=" bg-barbie-pink text-white flex-none w-full h-[300px] ">
+      <div className=" bg-barbie-pink text-white flex-none w-full  ">
         <OrderValue />
       </div>
     </div> 

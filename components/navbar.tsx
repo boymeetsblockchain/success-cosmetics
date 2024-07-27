@@ -22,7 +22,6 @@ export const Navbar = () => {
   const { data: session, status } = useSession();
   const { cartItems } = useCartStore();
  const cartCount = cartItems.length;
-  console.log(cartCount)
 const onSignOut =()=>{
   toast.success("Successfully Logged out")
   signOut()
@@ -36,12 +35,7 @@ const onSignOut =()=>{
           </Link>
           {status === "authenticated" ? (
             <>
-              <div className="hidden md:flex relative items-center">
-                <Input className="pl-10 pr-4 py-2 border rounded-lg" placeholder="Search..." />
-                <div className="absolute left-2">
-                  <SearchIcon className="h-5 w-5 text-gray-500" />
-                </div>
-              </div>
+    
               <div className="hidden md:flex items-center gap-x-4">
                 <DropdownMenu>
                   <DropdownMenuTrigger className="flex items-center outline-none gap-x-3">
@@ -86,7 +80,13 @@ const onSignOut =()=>{
 </Link>
             </div>
           )}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-x-4 ">
+          <Link href={'/cart'} className="relative inline-block">
+  <ShoppingCart size={24} className="text-gray-800" />
+  <small className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-barbie-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center border-2 border-white">
+    {cartCount}
+  </small>
+</Link>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 transition-all duration-300"
@@ -165,12 +165,6 @@ const onSignOut =()=>{
                     </Link>
                   )
                 }
-                            <Link href={'/cart'} className="relative inline-block">
-  <ShoppingCart size={24} className="text-gray-800" />
-  <small className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-barbie-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center border-2 border-white">
-    {cartCount}
-  </small>
-</Link>
               </div>
                 <div className="relative flex items-center px-3 py-2">
                   <Input className="pl-10 pr-4 py-2 border rounded-lg w-full" placeholder="Search..." />
@@ -183,13 +177,7 @@ const onSignOut =()=>{
               <>
              <div className="flex ltems-center flex-col space-y-4 ">
              <Link href={'/register'} className="text-sm font-medium hover:text-barbie-pink">Register</Link>
-                <Link href={'/login'} className="text-sm font-medium hover:text-barbie-pink">Login</Link>
-                <Link href={'/cart'} className="relative inline-block">
-  <ShoppingCart size={24} className="text-gray-800" />
-  <small className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-barbie-pink text-white text-xs rounded-full h-6 w-6 flex items-center justify-center border-2 border-white">
-    {cartCount}
-  </small>
-</Link>
+            <Link href={'/login'} className="text-sm font-medium hover:text-barbie-pink">Login</Link>
              </div>
               </>
             )}
