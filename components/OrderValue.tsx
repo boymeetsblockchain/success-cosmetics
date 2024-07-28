@@ -21,10 +21,10 @@ const OrderValue = () => {
   return (
     <div className="p-6  w-full mx-auto">
       <div className="text-center mb-5">
-        <h3 className="text-xl ">
+        <h3 className="text-sm md:text-lg ">
           Total Quantity: <span className="font-bold ">{quantity}</span>
         </h3>
-        <h3 className="text-xl  mt-3">
+        <h3 className="text-sm md:text-lg mt-3">
           Total Price:{" "}
           <span className="font-bold ">
             {new Intl.NumberFormat("en-US", {
@@ -37,7 +37,7 @@ const OrderValue = () => {
 
       <div className="flex justify-center ">
         <Link href="/order/checkout">
-          <Button className="text-xl font-bold text-barbie-pink hover:bg-barbie-pink hover:text-white bg-white transition-colors duration-300 rounded-lg px-8 py-3">
+          <Button className="text-sm md:text-lg font-bold text-barbie-pink hover:bg-barbie-pink hover:text-white bg-white transition-colors duration-300 rounded-lg px-8 py-3">
             Checkout
           </Button>
         </Link>
