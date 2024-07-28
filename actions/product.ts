@@ -2,6 +2,7 @@
 
 import cloudinary from "@/config/cloudinary";
 import { db } from "@/lib/db";
+import { error } from "console";
 import { redirect } from "next/navigation";
 
 const addNewProduct = async (formData: FormData) => {
@@ -11,10 +12,16 @@ const addNewProduct = async (formData: FormData) => {
     const priceString = formData.get("price") as string | null;
     const description = formData.get("description") as string | null;
 
-    console.log(image);
-
     if (!name || !description || !priceString || !category || !image) {
-        throw new Error("Missing required fields");
+        return {
+            error:("Missing required fields")
+        }
+    }
+
+    if (image.name ==="undefined") {
+        return {
+            error:("Image file not selected")
+        }
     }
 
     const arrayBuffer = await image.arrayBuffer();
@@ -89,11 +96,10 @@ const deleteSingleProduct = async (productId: string) => {
                 id: productId
             }
         });
-        redirect('/admin/products');
+     
         return true;
     } catch (error) {
-        console.error('Failed to fetch product:', error);
-        throw new Error('Failed to fetch product');
+        console.log('Failed to fetch product:', error);
     }
 };
 

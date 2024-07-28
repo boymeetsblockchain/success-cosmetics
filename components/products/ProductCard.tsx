@@ -37,15 +37,20 @@ export const ProductCard = ({src,name,price,id}:ProductCardProps)=>{
       <Image src={src} width={250} height={350} alt="products" className=" transition-all duration-300 ease-in-out hover:scale-105  "  onClick={()=>viewProducts(id)} />
       </div>
       <CardTitle className="flex items-start mt-2 gap-y-1 flex-col">
-        <p>{name}</p>
-        <p className="text-green-600 mt-1  font-bold">₦{price}</p>
+        <p className="text-sm md:text-lg">{name}</p>
+        <p className="text-green-600 mt-1 text-sm md:text-lg font-bold">
+        {new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "NGN",
+                }).format(price)}
+        </p>
       </CardTitle>
     </CardContent>
 
     <CardFooter>
     <Button 
      onClick={onAddToCart}
-    className="bg-barbie-pink text-white w-[200px] border absolute bottom-4 right-10 transition-colors duration-300 ease-in-out hover:bg-white hover:text-barbie-pink hover:border-barbie-pink">
+    className="bg-barbie-pink text-white w-[200px]  text-sm md:text-lg border absolute bottom-4 right-10 transition-colors duration-300 ease-in-out hover:bg-white hover:text-barbie-pink hover:border-barbie-pink">
       Add to Cart
     </Button>
     </CardFooter>

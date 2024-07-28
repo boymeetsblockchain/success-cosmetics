@@ -45,17 +45,17 @@ const ProductsPage = () => {
 
     return (
         <div className="my-5 px-4 md:px-6 lg:px-8 flex flex-col items-center justify-center">
-            <h1 className={cn(" text-4xl font-medium text-center", work.className)}>
+            <h1 className={cn(" md:text-4xl text-lg font-medium text-center", work.className)}>
                 Here A List of Our Available Products
             </h1>
-            <div className="flex relative items-center w-[400px] my-4 self-center">
+            <div className="flex relative items-center w-[400px] my-4 self-center px-4">
                 <Input
                     className="pl-10 pr-4 py-2 border rounded-lg"
                     placeholder="Search Product..."
                     value={searchTerm}
                     onChange={handleSearch}
                 />
-                <div className="absolute left-2">
+                <div className="absolute left-6">
                     <SearchIcon className="h-5 w-5 text-gray-500" />
                 </div>
             </div>
