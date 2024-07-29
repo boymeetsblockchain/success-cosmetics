@@ -31,7 +31,7 @@ const onSignOut =()=>{
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between">
           <Link href="/" className="flex flex-shrink-0 items-center">
-            <h1 className={cn("text-2xl font-bold",great.className)}>Success Cosmetics</h1>
+            <h1 className={cn("md:text-2xl text-lg font-bold",great.className)}>Success Cosmetics</h1>
           </Link>
           {status === "authenticated" ? (
             <>
@@ -119,10 +119,10 @@ const onSignOut =()=>{
         </div>
       </div>
       {menuOpen && (
-        <div className="fixed inset-0 h-[280px] py-3 bg-white z-50">
+        <div className="fixed inset-0 h-[200px]  opacity-90 py-3 bg-white z-50">
           <div className="flex justify-between items-center px-4 py-3 border-b">
             <Link href="/" className="flex flex-shrink-0 items-center">
-            <h1 className={cn("text-2xl font-bold",great.className)}>Success Cosmetics</h1>
+            <h1 className={cn("text-lg md:text-2xl font-bold",great.className)}>Success Cosmetics</h1>
             </Link>
             <button
               onClick={() => setMenuOpen(false)}
@@ -166,12 +166,6 @@ const onSignOut =()=>{
                   )
                 }
               </div>
-                <div className="relative flex items-center px-3 py-2">
-                  <Input className="pl-10 pr-4 py-2 border rounded-lg w-full" placeholder="Search..." />
-                  <div className="absolute left-4">
-                    <SearchIcon className="h-5 w-5 text-gray-500" />
-                  </div>
-                </div>
               </>
             ) : (
               <>
