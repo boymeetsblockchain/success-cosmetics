@@ -31,6 +31,7 @@ export const Products = () => {
                         name={product.name}
                         price={product.price}
                         id={product.id}
+                        quantity={product.quantity}
                     />
                 ))}
             </div> 

@@ -15,6 +15,7 @@ export interface ProductCardProps {
   name:string,
   price:number,
   id: string,
+  quantity?: number;
 }
 
 export type CartProduct = ProductCardProps & {

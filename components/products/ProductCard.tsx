@@ -16,10 +16,16 @@ interface ProductCardProps {
     name:string,
     price:number,
     id: string,
+    quantity?: number
 }
 
 
-export const ProductCard = ({src,name,price,id}:ProductCardProps)=>{
+export const ProductCard = ({src,name,price,quantity,id}:ProductCardProps)=>{
+  console.log({
+    name,
+    price,
+    quantity
+  })
   const router= useRouter() 
   const {addItemToCart,cartItems}= useCartStore()
   const onAddToCart = () => {
@@ -48,11 +54,17 @@ export const ProductCard = ({src,name,price,id}:ProductCardProps)=>{
     </CardContent>
 
     <CardFooter>
-    <Button 
-     onClick={onAddToCart}
-    className="bg-barbie-pink text-white w-[200px]  text-sm md:text-lg border absolute bottom-4 right-10 transition-colors duration-300 ease-in-out hover:bg-white hover:text-barbie-pink hover:border-barbie-pink">
-      Add to Cart
-    </Button>
+  {
+    quantity == 0 ? (
+      <h1 className="text-center  font-bold text-red-500">
+        Out of Stock
+     </h1>
+    ):(   <Button 
+      onClick={onAddToCart}
+     className="bg-barbie-pink text-white w-[200px]  text-sm md:text-lg border absolute bottom-4 right-10 transition-colors duration-300 ease-in-out hover:bg-white hover:text-barbie-pink hover:border-barbie-pink">
+       Add to Cart
+     </Button>)
+  }
     </CardFooter>
   </Card>
   

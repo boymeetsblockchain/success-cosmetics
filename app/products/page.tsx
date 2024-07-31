@@ -19,6 +19,7 @@ const ProductsPage = () => {
             try {
                 const allProducts = await getAllProducts();
                 setProducts(allProducts);
+                console.log(products)
             } catch (error) {
                 console.error("Failed to fetch products:", error);
                 toast.error("Failed to load products");
@@ -26,7 +27,7 @@ const ProductsPage = () => {
         };
 
         fetchProducts();
-    }, []);
+    }, [products]);
 
     const handleSearch = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const term = event.target.value;
@@ -67,6 +68,7 @@ const ProductsPage = () => {
                         name={product.name}
                         price={product.price}
                         id={product.id}
+                        quantity={product.quantity}
                     />
                 ))}
             </div>

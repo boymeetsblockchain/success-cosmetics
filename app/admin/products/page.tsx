@@ -46,6 +46,7 @@ const AdminProducts = () => {
                     >
                       View
                     </Link>
+                    
                   </td>
                 </tr>
               ))}

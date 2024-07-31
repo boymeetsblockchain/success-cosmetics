@@ -51,6 +51,10 @@ const AdminSingleProduct = () => {
      router.push('/admin/products')
   }
 
+  const onUpdate =(id:string)=>{
+     router.push(`/admin/products/update/${id}`)
+  }
+
   return (
     <div className="flex flex-col md:flex-row mx-auto max-w-7xl gap-5 justify-between px-4 py-20 sm:px-6 lg:px-8">
     <div className="images flex gap-x-10 flex-1">
@@ -91,6 +95,11 @@ const AdminSingleProduct = () => {
       onClick={()=>onDelete(product.id)}
       className="mt-4 bg-red-500 text-white w-[200px] border transition-colors duration-300 ease-in-out hover:bg-white hover:text-red-500 ">
         Delete Product
+      </Button>
+      <Button 
+      onClick={()=>onUpdate(product.id)}
+      className="mt-4 bg-green-500 text-white w-[200px] border transition-colors duration-300 ease-in-out hover:bg-white hover:text-green-500 ">
+         Update Product
       </Button>
     </div>
   </div>
