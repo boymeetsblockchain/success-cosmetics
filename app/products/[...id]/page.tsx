@@ -10,6 +10,7 @@ import { getSingleProductById } from "@/actions/product";
 import useCartStore from "@/store/cart";
 import toast from "react-hot-toast";
 
+
 const ProductPage = () => {
   const { addItemToCart } = useCartStore();
   const [product, setProduct] = useState<ProductTypes | null>(null);

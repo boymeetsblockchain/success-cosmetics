@@ -33,3 +33,15 @@ export interface User {
 }
 
 export type UserRole = 'USER' | 'ADMIN' | null;
+
+
+export interface OrderProps {
+  id: string;
+  userId: string;
+  totalAmount: number;
+  description:string;
+  isDelivered:Boolean
+  completed: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}

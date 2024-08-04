@@ -2,21 +2,32 @@ import Link from "next/link";
 import { CartProduct } from "@/types";
 import useCartStore from "@/store/cart";
 import { Button } from "./ui/button";
+import useCheckoutStore from "@/store/checkout";
+import { useRouter } from "next/navigation";
 
-const getTotal = (cartItems: CartProduct[]) => {
-  let totalQuantity = 0;
-  let totalPrice = 0;
-  cartItems.forEach((item) => {
-    totalQuantity += item.quantity!;
-    totalPrice += item.price! * item.quantity!;
-  });
-  return { totalPrice, totalQuantity };
-};
 
 const OrderValue = () => {
+  const router = useRouter()
+  const getTotal = (cartItems: CartProduct[]) => {
+    let totalQuantity = 0;
+    let totalPrice = 0;
+    cartItems.forEach((item) => {
+      totalQuantity += item.quantity!;
+      totalPrice += item.price! * item.quantity!;
+    });
+    return { totalPrice, totalQuantity };
+  };
+  const {}= useCheckoutStore()
   const { cartItems } = useCartStore();
 
   const { totalQuantity: quantity, totalPrice: price } = getTotal(cartItems);
+
+  const setCartPrice = useCheckoutStore((state) => state.setCartPrice);
+
+  const handleCheckout = () => {
+    setCartPrice(price);
+    router.push('/orders/checkout')
+  };
 
   return (
     <div className="p-6  w-full mx-auto">
@@ -36,11 +47,14 @@ const OrderValue = () => {
       </div>
 
       <div className="flex justify-center ">
-        <Link href="/order/checkout">
-          <Button className="text-sm md:text-lg font-bold text-barbie-pink hover:bg-barbie-pink hover:text-white bg-white transition-colors duration-300 rounded-lg px-8 py-3">
+  
+          <Button
+            onClick={handleCheckout}
+            className="text-sm md:text-lg font-bold text-barbie-pink hover:bg-barbie-pink hover:text-white bg-white transition-colors duration-300 rounded-lg px-8 py-3"
+          >
             Checkout
           </Button>
-        </Link>
+        
       </div>
     </div>
   );

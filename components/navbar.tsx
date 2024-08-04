@@ -4,7 +4,7 @@ import { work, great} from "@/font";
 import Link from "next/link";
 import { Input } from "./ui/input";
 import { useSession } from "next-auth/react";
-import { LogOut, SearchIcon, ShoppingCart } from "lucide-react";
+import { Folders, LogOut, SearchIcon, ShoppingCart } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -45,10 +45,16 @@ const onSignOut =()=>{
                     </Avatar>
                     <p className="font-medium text-xs md:text-sm">Hi, {session?.user?.name}</p>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuItem className="flex items-center gap-x-3" onClick={onSignOut} >
+                  <DropdownMenuContent className="bg-white">
+                    <DropdownMenuItem className="flex items-center  gap-x-3" onClick={onSignOut} >
                       <LogOut />
                       <span className="text-sm font-medium">SignOut</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="flex items-center  gap-x-3">
+                      <Folders/>
+                      <Link
+                       href={'/orders/orderlist'}
+                       className="text-sm font-medium">Orders</Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -119,7 +125,7 @@ const onSignOut =()=>{
         </div>
       </div>
       {menuOpen && (
-        <div className="fixed inset-0 h-[200px]  opacity-90 py-3 bg-white z-50">
+        <div className="fixed inset-0 h-[250px]  opacity-90 py-4 bg-white z-50">
           <div className="flex justify-between items-center px-4 py-3 border-b">
             <Link href="/" className="flex flex-shrink-0 items-center">
             <h1 className={cn("text-lg md:text-2xl font-bold",great.className)}>Success Cosmetics</h1>
@@ -155,9 +161,14 @@ const onSignOut =()=>{
                   <p className="font-medium text-xs md:text-sm">Hi, {session?.user?.name}</p>
                 </Link>
               <div className="flex items-start px-3 py-2 flex-col gap-y-3">
-              <p className="flex gap-x-3 items-center  rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" onClick={onSignOut}>
+              <p className="flex gap-x-3 items-center cursor-pointer  rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" onClick={onSignOut}>
                   <LogOut /> SignOut
                 </p>
+              <Link
+              href={'/orders/orderlist'}
+               className="flex gap-x-3 items-center cursor-pointer  rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" onClick={onSignOut}>
+                  <Folders /> Orders
+                </Link>
                 {
                   session.user.role=== "ADMIN" && (
                     <Link href={'/admin'} className="bg-barbie-pink text-white py-2 px-3 hover:bg-white hover:text-barbie-pink shadow-md border-barbie-pink border">

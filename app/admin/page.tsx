@@ -26,7 +26,9 @@ async function page () {
                </Link>
             </Button>
             <Button className="bg-barbie-pink text-white hover:text-white hover:bg-barbie-pink">
-               View Orders
+              <Link href={'/admin/orders'}>
+              View Orders
+              </Link>
             </Button>
         </div>
     </div>

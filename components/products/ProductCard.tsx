@@ -21,11 +21,6 @@ interface ProductCardProps {
 
 
 export const ProductCard = ({src,name,price,quantity,id}:ProductCardProps)=>{
-  console.log({
-    name,
-    price,
-    quantity
-  })
   const router= useRouter() 
   const {addItemToCart,cartItems}= useCartStore()
   const onAddToCart = () => {
