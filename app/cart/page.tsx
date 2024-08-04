@@ -10,7 +10,7 @@ const CartPage = () => {
 
   if (cartItems && cartItems.length < 1) {
     return (
-      <div className="h-72 flex flex-col items-center justify-center">
+      <div className="h-full flex flex-col items-center min-h-screen  justify-center">
         <h2 className="text-3xl mt-10 mb-5 font-bold">Cart is Empty</h2>
         <Link
           href="/products"
@@ -23,7 +23,7 @@ const CartPage = () => {
   }
 
   return ( 
-    <div className="p-4">
+    <div className="p-4  min-h-screen">
     <div className="">
       {cartItems?.map((item) => (
         <CartItemCard product={item} key={item.id} />

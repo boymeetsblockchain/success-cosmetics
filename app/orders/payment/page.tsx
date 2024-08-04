@@ -10,6 +10,8 @@ import { createOrder } from "@/actions/order";
 import useCartStore from "@/store/cart";
 import { CartProduct } from "@/types";
 import useCheckoutStore from "@/store/checkout";
+import { cn } from "@/lib/utils";
+import { work } from "@/font";
 
 const Payment = () => {
   const { total } = useTotalPrice();
@@ -69,7 +71,7 @@ const Payment = () => {
     <div className="my-5 px-4 md:px-6 lg:px-8 flex flex-col w-full max-w-7xl items-center justify-center mx-auto">
       <h1 className="text-2xl font-bold mb-4">Bank Transfer Payment</h1>
       <div className="mb-6">
-        <h2 className="text-lg font-semibold">Total Amount to Transfer:</h2>
+        <h2 className="text-lg font-bold ">Total Amount to Transfer:</h2>
         <p className="text-xl font-bold">
           {new Intl.NumberFormat("en-US", {
             style: "currency",
@@ -77,13 +79,13 @@ const Payment = () => {
           }).format(total)}
         </p>
       </div>
-      <div className="mb-6 shadow-md py-3 px-2 rounded-md">
-        <h2 className="text-lg font-semibold">Bank Account Details:</h2>
+      <div className="mb-6 shadow-md py-3 px-2 rounded-md w-[400px]">
+        <h2 className="text-lg font-bold ">Bank Account Details:</h2>
         <div className="flex items-center">
-          <p className="text-lg">Account Name: Iyare Success Itohanmwosa</p>
+          <p className="text-lg font-bold">Account Name: Iyare Success Itohanmwosa</p>
         </div>
         <div className="flex items-center">
-          <p className="text-lg">Account Number: 2051740856</p>
+          <p className="text-lg font-bold">Account Number: 2051740856</p>
           <button
             onClick={handleCopyToClipboard}
             className="ml-2 text-barbie-pink hover:text-barbie-pink-dark"
@@ -93,21 +95,24 @@ const Payment = () => {
           </button>
           {copied && <span className="ml-2 text-green-500">Copied!</span>}
         </div>
-        <p className="text-lg">Bank: Kuda</p>
+        <p className="text-lg font-bold">Bank: Kuda</p>
       </div>
       <div className="mb-6">
-        <h2 className="text-lg font-semibold">Instructions:</h2>
-        <ol className="list-decimal list-inside">
+        <h2 className="text-lg font-bold flex flax-col gap-y-2 ">Instructions:</h2>
+        <ul className={cn("list-decimal list-inside",work.className)}>
           <li>Make the transfer using the details provided above.</li>
           <li>
             Once the transfer is complete, click the confirm payment button
             below.
           </li>
           <li>
+            You will be navigated to your order page to follow up on payment and delivery
+          </li>
+          <li>
             We will verify your payment and update your order status
             accordingly.
           </li>
-        </ol>
+        </ul>
       </div>
       <Button
         onClick={handleConfirmPayment}

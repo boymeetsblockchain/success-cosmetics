@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const Hero = () => {
   return (
-    <div className={cn("relative h-[600px] bg-center bg-cover flex items-center flex-col gap-y-4 justify-center ")} style={{ backgroundImage: 'url("/hero1.jpg")' }}>
+    <div className={cn("relative h-[600px] bg-center bg-cover flex items-center flex-col gap-y-4 justify-center ")}  style={{ backgroundImage: 'url("/hero1.jpg")' }}>
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative z-10 text-center flex items-center flex-col gap-y-3 text-white">
         <h1 className="text-4xl md:text-7xl  font-bold">

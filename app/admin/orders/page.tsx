@@ -13,6 +13,7 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table"
+import { Loader } from "@/components/loader";
   
 
 const AdminOrderPage = () => {
@@ -64,7 +65,15 @@ const AdminOrderPage = () => {
                   }).format(order.totalAmount)}
                 </TableCell>
                 <TableCell className="px-4 py-2 border-b text-center">
-                  {new Date(order.createdAt).toLocaleDateString()}
+                  {new Date(order.createdAt).toLocaleString('en-US', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit'
+})
+}
                 </TableCell>
                 <TableCell className="px-4 py-2 border-b text-center">
                   {order.completed ? "Completed" : "Pending"}
@@ -82,7 +91,7 @@ const AdminOrderPage = () => {
           </TableBody>
         </Table>
       ) : (
-        <p>Loading orders...</p>
+     <Loader loading/>
       )}
     </div>
   );

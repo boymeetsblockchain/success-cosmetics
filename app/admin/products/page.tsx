@@ -16,7 +16,7 @@ const AdminProducts = () => {
   }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 h-auto py-8">
+    <div className="max-w-6xl mx-auto px-4 min-h-screen py-8">
       <div className="w-full bg-white px-4 py-3 rounded-lg shadow-lg">
         <h1 className="mb-10 text-3xl font-bold text-center">Products</h1>
         {products.length > 0 ? (

@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { Loader } from "@/components/loader";
 
 interface OrderProps {
   id: string;
@@ -55,7 +56,7 @@ const GetSingleOrder = () => {
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loader loading/>;
   }
 
   if (!order) {
@@ -63,7 +64,7 @@ const GetSingleOrder = () => {
   }
 
   return (
-    <div className="my-5 px-4 md:px-6 lg:px-8 flex flex-col space-y-3  w-full max-w-7xl items-center justify-center mx-auto">
+    <div className="my-5 px-4 md:px-6 lg:px-8 flex flex-col space-y-3  w-full min-h-screen max-w-7xl items-center  mx-auto">
       <h1 className="text-2xl font-bold mb-4">Order Details</h1>
       <div className="shadow-md p-6 rounded-md w-full  max-w-4xl">
         <h2 className="text-lg font-semibold">Order Details:</h2>
@@ -72,7 +73,15 @@ const GetSingleOrder = () => {
           style: "currency",
           currency: "NGN",
         }).format(order.totalAmount)}</p>
-        <p><strong>Order Date:</strong> {new Date(order.createdAt).toLocaleDateString()}</p>
+        <p><strong>Order Date:</strong> {new Date(order.createdAt).toLocaleString('en-US', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit'
+})
+}</p>
         <p><strong>Status:</strong> {order.completed ? "Completed" : "Pending"}</p>
       </div>
       {!order.completed && (

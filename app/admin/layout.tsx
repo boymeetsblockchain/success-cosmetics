@@ -1,4 +1,6 @@
 import { auth } from "@/auth";
+import { work } from "@/font";
+import { cn } from "@/lib/utils";
 import { redirect } from "next/navigation";
 
 export default async function AdminLayout({
@@ -14,7 +16,7 @@ export default async function AdminLayout({
   }
 
   return (
-    <section>
+    <section className={cn(work.className)}>
       {children}
     </section>
   );

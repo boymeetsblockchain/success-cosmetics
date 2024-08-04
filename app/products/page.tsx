@@ -9,19 +9,25 @@ import { ProductCardProps} from "@/types";
 import { Input } from "@/components/ui/input";
 import { SearchIcon } from "lucide-react";
 import toast from "react-hot-toast";
+import { Loader } from "@/components/loader";
 
 const ProductsPage = () => {
     const [products, setProducts] = useState<ProductCardProps[]>([]);
+    const [loading,setLoading]= useState(false)
     const [searchTerm, setSearchTerm] = useState<string>("");
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
+                setLoading(true)
                 const allProducts = await getAllProducts();
                 setProducts(allProducts);
+                setLoading(false)
             } catch (error) {
                 console.error("Failed to fetch products:", error);
                 toast.error("Failed to load products");
+            }finally{
+                setLoading(false)
             }
         };
 
@@ -43,6 +49,13 @@ const ProductsPage = () => {
         }
     };
 
+
+    if(loading){
+        return (
+            <Loader loading/>
+        )
+    }
+    
     return (
         <div className="my-5 px-4 md:px-6 lg:px-8 flex flex-col items-center justify-center">
             <h1 className={cn(" md:text-4xl text-lg font-medium text-center", work.className)}>

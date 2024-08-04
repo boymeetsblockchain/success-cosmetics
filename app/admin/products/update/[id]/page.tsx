@@ -1,5 +1,6 @@
 "use client"
 import { getSingleProductById, updateProduct } from "@/actions/product";
+import { Loader } from "@/components/loader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -52,7 +53,7 @@ const UpdateProduct = () => {
     };
 
     if (!product) {
-        return <div>Loading...</div>;
+        return <Loader loading/>
     }
 
     return (
