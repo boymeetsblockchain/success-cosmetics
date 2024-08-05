@@ -28,7 +28,7 @@ export default function RootLayout({
             {children}
             <div className="fixed bottom-4 right-4">
               <a href="https://wa.me/+2348159473033" target="_blank">
-                <Image src="/whatsap.png" alt="WhatsApp Button" height={50} width={50} />
+                <Image src="/logo.png" alt="WhatsApp Button" height={50} width={50} />
               </a>
             </div>
           </main>
