@@ -40,7 +40,12 @@ const getSingleOrderById = async (id: string) => {
 
 const getAllOrders = async () => {
   try {
-    const orders = await db.order.findMany({});
+    const orders = await db.order.findMany({
+      orderBy: {
+        createdAt: 'desc', 
+      },
+
+    });
     return orders;
   } catch (error) {
     console.error("Error fetching orders:", error);
@@ -78,6 +83,22 @@ const updateOrderToCompleted = async (id: string) => {
     throw new Error("Failed to update order");
   }
 }
+const updateOrderToDelivered = async (id: string) => {
+  try {
+    const updatedOrder = await db.order.update({
+      where: {
+        id,
+      },
+      data: {
+        isDelivered: true,
+      },
+    });
+    return updatedOrder;
+  } catch (error) {
+    console.error("Error updating order:", error);
+    throw new Error("Failed to update order");
+  }
+}
 
 const getOrdersByUserId = async (userId: string) => {
   try {
@@ -103,12 +124,13 @@ const searchOrder = async (searchTerm: string) => {
       },
     });
 
-    return order;
+    return order ? [order] : [];
   } catch (error) {
     console.error('Failed to search order:', error);
     throw new Error('Failed to search order');
   }
 }
+
 
 
 const deleteAllOrders = async()=>{
@@ -127,6 +149,7 @@ export {
   getAllOrders,
   deleteOrder,
   updateOrderToCompleted,
+  updateOrderToDelivered,
   getOrdersByUserId,
   searchOrder,
   deleteAllOrders

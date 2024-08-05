@@ -1,19 +1,11 @@
 "use client";
-import { getSingleOrderById, updateOrderToCompleted } from "@/actions/order";
+import { getSingleOrderById, updateOrderToCompleted,updateOrderToDelivered } from "@/actions/order";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Loader } from "@/components/loader";
-
-interface OrderProps {
-  id: string;
-  userId: string;
-  totalAmount: number;
-  completed: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { OrderProps } from "@/types";
 
 const GetSingleOrder = () => {
   const { id } = useParams();
@@ -54,6 +46,17 @@ const GetSingleOrder = () => {
       toast.error("Failed to update order status");
     }
   };
+  const handleMarkAsDelivered = async () => {
+    if (!order) return;
+
+    try {
+      await updateOrderToDelivered(order.id);
+      toast.success("Order marked as completed");
+      router.refresh(); 
+    } catch (error) {
+      toast.error("Failed to update order status");
+    }
+  };
 
   if (loading) {
     return <Loader loading/>;
@@ -82,16 +85,28 @@ const GetSingleOrder = () => {
   second: '2-digit'
 })
 }</p>
+<p><strong> {order.description}</strong></p>
         <p><strong>Status:</strong> {order.completed ? "Completed" : "Pending"}</p>
+        <p><strong>Delivery Status:</strong> {order.isDelivered ? "Delivered" : "Not Delivered"}</p>
       </div>
-      {!order.completed && (
+     <div className="flex items-center gap-x-3 ">
+     {!order.completed && (
         <button
           onClick={handleMarkAsCompleted}
-          className="text-sm md:text-lg font-bold hover:text-barbie-pink hover:bg-white text-white bg-barbie-pink transition-colors duration-300 rounded-lg px-8 py-3 mt-4"
+          className="text-sm md:text-lg font-bold hover:text-barbie-pink border-2  hover:bg-white text-white bg-barbie-pink transition-colors duration-300 rounded-lg px-8 py-3 mt-4"
         >
           Mark as Completed
         </button>
       )}
+      {!order.isDelivered && (
+        <button
+          onClick={handleMarkAsDelivered}
+          className="text-sm md:text-lg font-bold hover:text-white border-2  hover:bg-barbie-pink text-barbie-pink bg-white  transition-colors duration-300 rounded-lg px-8 py-3 mt-4"
+        >
+          Mark as Delivered
+        </button>
+      )}
+     </div>
     </div>
   );
 };

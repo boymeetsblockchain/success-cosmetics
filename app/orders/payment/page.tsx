@@ -79,7 +79,7 @@ const Payment = () => {
           }).format(total)}
         </p>
       </div>
-      <div className="mb-6 shadow-md py-3 px-2 rounded-md w-[400px]">
+      <div className="mb-6 shadow-md py-3 px-2 rounded-md w-full md:w-[400px]">
         <h2 className="text-lg font-bold ">Bank Account Details:</h2>
         <div className="flex items-center">
           <p className="text-lg font-bold">Account Name: Iyare Success Itohanmwosa</p>

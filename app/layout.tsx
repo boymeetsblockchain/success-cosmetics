@@ -4,7 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { SessionProvider } from "next-auth/react";
-import  {Toaster} from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast';
+import Image from "next/image";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -21,15 +22,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={urbanist.className}>
-      
-       <SessionProvider>
-      <Navbar />
-          {children}
-
-        <Footer />
-      </SessionProvider>
-      <Toaster/>
-  
+        <SessionProvider>
+          <Navbar />
+          <main className="relative">
+            {children}
+            <div className="fixed bottom-4 right-4">
+              <a href="https://wa.me/+2348159473033" target="_blank">
+                <Image src="/whatsap.png" alt="WhatsApp Button" height={50} width={50} />
+              </a>
+            </div>
+          </main>
+          <Footer />
+        </SessionProvider>
+        <Toaster />
       </body>
     </html>
   );

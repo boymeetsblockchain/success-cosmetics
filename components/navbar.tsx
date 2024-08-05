@@ -46,7 +46,7 @@ const onSignOut =()=>{
                     <p className="font-medium text-xs md:text-sm">Hi, {session?.user?.name}</p>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-white">
-                    <DropdownMenuItem className="flex items-center  gap-x-3" onClick={onSignOut} >
+                    <DropdownMenuItem className="flex items-center  cursor-pointer gap-x-3" onClick={onSignOut} >
                       <LogOut />
                       <span className="text-sm font-medium">SignOut</span>
                     </DropdownMenuItem>

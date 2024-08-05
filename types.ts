@@ -39,8 +39,8 @@ export interface OrderProps {
   id: string;
   userId: string;
   totalAmount: number;
-  description:string;
-  isDelivered:Boolean
+  description: string;
+  isDelivered: boolean;
   completed: boolean;
   createdAt: Date;
   updatedAt: Date;

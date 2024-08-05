@@ -7,12 +7,12 @@ export const shippingMethods = [
     {
       method: "Ugbor, Irhirhi, Ogbazoo, Adp, Oko Central",
       details: "Same day delivery for orders placed before 1pm",
-      price: 2000
+      price: 3000
     },
     {
       method: "Asaba, Ughelli, Agbor Abraka",
       details: "Delivery Take 1-2 Working days excluding weekends",
-      price: 2500
+      price: 3000
     },
     {
       method: "West ABC Logistics (Lagos, Ondo, Ogun, Ibadan)",
@@ -32,22 +32,22 @@ export const shippingMethods = [
     {
       method: "Ekpoma, Auchi",
       details: "Delivery days are Monday, Wednesday & Saturday",
-      price: 2500
+      price: 3000
     },
     {
       method: "Sapele By Pass, Eyean, Egba",
       details: "Same day delivery when you order before 1pm.",
-      price: 3000
+      price: 3500
     },
     {
       method: "Warri, Sapele, Oghara, Jesse",
       details: "Delivery Time frame is 24hrs after payment is confirmed",
-      price: 2500
+      price: 3000
     },
     {
       method: "Ugbowo, Isihor, Oluku, Ekosodin, Uniben, Ubth, Uselu",
       details: "Delivery timeframe is 24hrs after payment is confirmed",
-      price: 2500
+      price: 1500
     },
     {
       method: "Rivers State ABC Logistics",
@@ -57,12 +57,12 @@ export const shippingMethods = [
     {
       method: "Okada",
       details: "Delivery days are Monday, Wednesday & Saturday",
-      price: 2500
+      price: 3000
     },
     {
       method: "Sapele Road (pz, okabere, peanut, limit)",
       details: "Delivery commences 24hr after payment is confirmed",
-      price: 2500
+      price: 3000
     },
     {
       method: "Upper, Third, Upper Mission Extension",
@@ -87,6 +87,6 @@ export const shippingMethods = [
     {
       method: "Airport Road, Akenzua, Stadium Road, Ring Road",
       details: "Items are dispatched 24hrs after order is confirmed",
-      price: 2000
+      price: 2500
     },
   ];
