@@ -50,6 +50,7 @@ const login = async (formData:FormData)=>{
       email,
       password,
     });
+     return { success:"User Logged in"}
   } catch (error) {
     return { error: "Invalid Email or password" };
   }

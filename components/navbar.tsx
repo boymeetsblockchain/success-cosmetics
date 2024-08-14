@@ -11,6 +11,7 @@ import { signOut } from "next-auth/react";
 import toast from "react-hot-toast";
 import useCartStore from "@/store/cart";
 
+
 export const Navbar = () => {
   const { data: session, status } = useSession();
   const { cartItems } = useCartStore();
@@ -86,7 +87,7 @@ export const Navbar = () => {
         <div className="flex  md:hidden bg-white ">
           <Link href="/profile" className="flex items-center gap-x-3 px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
         
-            <p className="font-medium text-xs">Hi, {session?.user?.name}</p>
+            <p className="font-medium hidden text-xs">Hi, {session?.user?.name}</p>
           </Link>
           <Link href="/orders/orderlist" className="flex items-center text-xs gap-x-3 px-3 py-2  font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
             <Folders className="hidden md:block" />

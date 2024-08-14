@@ -16,12 +16,13 @@ const LoginForm =()=>{
 
     async function ClientAction(formData: FormData) {
         const result = await login(formData);
-        if (result?.error) {
+        console.log(result)
+        if(result.success){
+            router.push('/')
+            toast.success("User successfully logged in");
+        }else if(result.error){
             setErrorMessage(result.error);
             toast.error(result.error);
-        } else {
-            router.push("/");
-            toast.success("User successfully logged in");
         }
     }
  return(
